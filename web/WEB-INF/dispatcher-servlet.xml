@@ -4,7 +4,12 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <mvc:annotation-driven />
+    <mvc:annotation-driven>
+   <!-- <mvc:message-converters>
+        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+    </mvc:message-converters>-->
+    </mvc:annotation-driven>
+    <mvc:resources mapping="/img/**" location="/WEB-INF/views/img/"></mvc:resources>
     <context:component-scan base-package="org.example.controller" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
