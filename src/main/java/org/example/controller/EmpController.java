@@ -25,13 +25,12 @@ public class EmpController {
 
     @GetMapping("/updlist")
     public @ResponseBody EmpVO getUpdList(int emp_id){
-        System.out.println(service.getUpdList(emp_id));
         EmpVO updList = service.getUpdList(emp_id);
         return updList;
     }
 
     @PostMapping("/register")
-    public String register(EmpVO empVO){
+    public String register(@ModelAttribute EmpVO empVO){
         //RedirectAttributes --> 등록이 끝난 후 다시 목록으로 돌아오기 위해서
         service.register(empVO);
 
@@ -45,8 +44,18 @@ public class EmpController {
         return "redirect:/";
     }
 
+/*
+    RequestParam 생략 가능
     @PostMapping("/remove")
     public String remove(@RequestParam("emp_id") int emp_id ){
+        service.remove(emp_id);
+
+        return "redirect:/";
+    }
+*/
+
+    @PostMapping("/remove")
+    public String remove(int emp_id ){
         service.remove(emp_id);
 
         return "redirect:/";
